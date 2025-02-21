@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel
 from timer import TimerWidget
 from todo import TodoWidget
 from taskgauge_bar import TaskGaugeBar
@@ -15,8 +15,14 @@ class MainWindow(QWidget):
         self.timer_widget = TimerWidget()
         self.task_gauge_bar = TaskGaugeBar()  # 先に TaskGaugeBar を作成
         self.todo_widget = TodoWidget(self.task_gauge_bar)  # TaskGaugeBar を Todo に渡す
+        self.todo_label = QLabel("Todo List")
+        self.todo_label.setStyleSheet("font-size: 18px; font-weight: bold; margin-top: 20px;")
+        self.timer_label = QLabel("Pomodoro Timer")
+        self.timer_label.setStyleSheet("font-size: 18px; font-weight: bold; margin-top: 20px;")
         
+        self.layout.addWidget(self.timer_label)
         self.layout.addWidget(self.timer_widget)
+        self.layout.addWidget(self.todo_label)
         self.layout.addWidget(self.todo_widget)
         self.layout.addWidget(self.task_gauge_bar)
         

@@ -9,11 +9,11 @@ class TodoWidget(QWidget):
     def initUI(self):
         self.layout = QVBoxLayout()
         
-        self.input_field = QLineEdit(self)
-        self.input_field.setPlaceholderText("タスクをここに記述")
+        self.list_widget = QListWidget(self)
         self.add_button = QPushButton("Add Task", self)
         self.reset_button = QPushButton("Reset Tasks", self)
-        self.list_widget = QListWidget(self)
+        self.input_field = QLineEdit(self)
+        self.input_field.setPlaceholderText("タスクをここに記述")
         
         self.add_button.clicked.connect(self.add_task)
         self.reset_button.clicked.connect(self.reset_tasks)
@@ -22,7 +22,7 @@ class TodoWidget(QWidget):
         self.layout.addWidget(self.add_button)
         self.layout.addWidget(self.reset_button)
         self.layout.addWidget(self.list_widget)
-        
+
         self.setLayout(self.layout)
     
     def add_task(self):
