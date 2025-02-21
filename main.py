@@ -36,7 +36,7 @@ class MainWindow(QWidget):
         self.move(screen.center() - window_rect.center())
 
         self.setLayout(self.layout)
-        self.setWindowTitle("Pomodoro App")
+        self.setWindowTitle("Pomodoro Todo App")
     
 if __name__ == "__main__":
     app = QApplication(sys.argv)
