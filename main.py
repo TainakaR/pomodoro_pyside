@@ -26,6 +26,12 @@ class MainWindow(QWidget):
         self.layout.addWidget(self.todo_widget)
         self.layout.addWidget(self.task_gauge_bar)
         
+        self.resize(450, 600)
+        
+        screen = self.screen().availableGeometry()
+        window_rect = self.frameGeometry()
+        self.move(screen.center() - window_rect.center())
+
         self.setLayout(self.layout)
         self.setWindowTitle("Pomodoro App")
     
