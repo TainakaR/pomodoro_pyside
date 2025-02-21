@@ -1,30 +1,30 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout
 from timer import TimerWidget
 from todo import TodoWidget
+from taskgauge_bar import TaskGaugeBar
 import sys
 
-class PomodoroApp(QMainWindow):
+class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Pomodoro Timer")
-        self.setGeometry(100, 100, 400, 300)
-
-        # メインウィジェット
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
-
-        # レイアウト
-        layout = QVBoxLayout()
+        self.initUI()
+    
+    def initUI(self):
+        self.layout = QVBoxLayout()
+        
         self.timer_widget = TimerWidget()
-        self.todo_widget = TodoWidget()
+        self.task_gauge_bar = TaskGaugeBar()  # 先に TaskGaugeBar を作成
+        self.todo_widget = TodoWidget(self.task_gauge_bar)  # TaskGaugeBar を Todo に渡す
         
-        layout.addWidget(self.timer_widget)
-        layout.addWidget(self.todo_widget)
+        self.layout.addWidget(self.timer_widget)
+        self.layout.addWidget(self.todo_widget)
+        self.layout.addWidget(self.task_gauge_bar)
         
-        central_widget.setLayout(layout)
-
+        self.setLayout(self.layout)
+        self.setWindowTitle("Pomodoro App")
+    
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = PomodoroApp()
+    window = MainWindow()
     window.show()
     sys.exit(app.exec())
