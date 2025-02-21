@@ -67,7 +67,7 @@ class TimerWidget(QWidget):
 
     def media_status_changed(self, status):
         if status == QMediaPlayer.MediaStatus.LoadedMedia:
-            print("Media loaded successfully")
+            print("sound loaded successfully")
         elif status == QMediaPlayer.MediaStatus.NoMedia:
             print("No media loaded")
 
@@ -77,22 +77,15 @@ class TimerWidget(QWidget):
     
     def update_timer(self):
         if self.time_left > 0:
-            # 2秒前に音声①を鳴らす（少し早めに音を鳴らす）
-            if self.time_left == 3:
+            if self.time_left == 4:
                 self.player_1.play()  # 音声①を再生
-            # 1秒前に音声①を鳴らす（少し早めに音を鳴らす）
-            elif self.time_left == 2:
-                self.player_1.play()  # 音声①を再生
-            
+        
             self.time_left -= 1
             self.label.setText(self.format_time())
         else:
             self.switch_timer()
-    
+
     def switch_timer(self):
-        # タイマーが切り替わる瞬間に音声②を鳴らす
-        self.player_2.play()  # 音声②を再生
-        
         if self.is_pomodoro:
             self.time_left = self.break_time
             self.is_pomodoro = False
@@ -103,6 +96,7 @@ class TimerWidget(QWidget):
     
     def reset_timer(self):
         self.timer.stop()
+        self.player_2.play()
         self.is_pomodoro = True
         self.time_left = self.pomodoro_time
         self.label.setText(self.format_time())
