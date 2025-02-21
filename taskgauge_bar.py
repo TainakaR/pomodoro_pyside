@@ -20,13 +20,13 @@ class TaskGaugeBar(QWidget):
 
         self.progress_bar.setStyleSheet("""
             QProgressBar {
-                height: 20px;
-                border-radius: 10px;
+                height: 10px;
+                border-radius: 5px;
                 background-color: #e0e0e0;
             }
             QProgressBar::chunk {
-                background-color: #4caf50;
-                border-radius: 10px;
+                background-color: #E48C00;
+                border-radius: 5px;
             }
         """)
         
