@@ -19,11 +19,14 @@ class MainWindow(QWidget):
         self.todo_label.setStyleSheet("font-size: 18px; font-weight: bold; margin-top: 0px;")
         self.timer_label = QLabel("Pomodoro Timer")
         self.timer_label.setStyleSheet("font-size: 18px; font-weight: bold; margin-top: 0px;")
+        self.progress_label = QLabel("Progress")
+        self.progress_label.setStyleSheet("font-size: 18px; font-weight: bold; margin-top: 0px;")
         
         self.layout.addWidget(self.timer_label)
         self.layout.addWidget(self.timer_widget)
         self.layout.addWidget(self.todo_label)
         self.layout.addWidget(self.todo_widget)
+        self.layout.addWidget(self.progress_label)
         self.layout.addWidget(self.task_gauge_bar)
         
         self.resize(450, 600)

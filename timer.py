@@ -9,8 +9,8 @@ class TimerWidget(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.pomodoro_time = 1 * 60  # 25分
-        self.break_time = 0.5 * 60  # 5分
+        self.pomodoro_time = 25 * 60  # 25分
+        self.break_time = 5 * 60  # 5分
         self.is_pomodoro = True  # 現在ポモドーロかどうか
         self.time_left = self.pomodoro_time
         
